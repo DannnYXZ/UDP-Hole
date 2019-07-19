@@ -6,13 +6,13 @@ import raw_udp_ip
 
 AUTH_TOKEN = b'\x14\x94\xef\x03W=d\xf8\xf1\xa9\x18\x97\x05\x85cJyyd\rk\x82X\x13L\x00\xf5\x1c*\xf7LJ\t\xee\xca~`\x8ci\xe7%\x85A\xea\xd7\xe1\x88iM@\xc3\xb4\x07\xa1b\xe1\xf1\x9b\xddjQ6*\xaa'
 AUTH_TOKEN = b'KEKEKEK'
-PING_ATTEMPTS = 3
+PING_ATTEMPTS = 4
 SUSTAIN_DELTA_SEC = 10
 
 connected_hosts = []
 probable_hosts = []
 
-pp = pprint.PrettyPrinter()
+
 sniff_sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_UDP)
 
 
@@ -71,9 +71,6 @@ def sustain_connected_hosts():
             raw_udp_ip.send_udp('^___^', from_addr, to_addr)
             print('SUSTAIN:', to_addr)
         time.sleep(SUSTAIN_DELTA_SEC)
-
-
-# raw_udp_ip.send_udp('KEKEKEK', ('192.168.43.91', 443), ('192.168.43.91', 52132)) 
 
 
 threading.Thread(target=sniff_for_host).start()
